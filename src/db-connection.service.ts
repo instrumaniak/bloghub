@@ -15,7 +15,7 @@ export class DBConnectionService implements TypeOrmOptionsFactory {
       synchronize: true,
       dropSchema: false,
       logging: true,
-      entities: [], // dist/**/*.entity.js
+      entities: ['dist/**/*.entity.js'], // dist/**/*.entity.js
     };
   }
 }
