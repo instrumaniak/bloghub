@@ -1,38 +1,4 @@
-## Description
+Based on this tutorial: https://www.youtube.com/playlist?list=PLBeQxJQNprbjZL5iguWelcxlmWvY4Dmdj
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-Implements:
+Which implements:
 https://github.com/gothinkster/realworld/tree/master/api
-
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
