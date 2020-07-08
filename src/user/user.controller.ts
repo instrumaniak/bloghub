@@ -10,7 +10,7 @@ import { UserService } from './user.service';
 import { AuthGuard } from '@nestjs/passport';
 import { UserEntity } from 'src/entities/user.entity';
 import { User } from 'src/auth/user.decorator';
-import { UpdateUserDTO } from 'src/models/user.dto';
+import { UpdateUserDTO } from './user.dto';
 
 @Controller('user')
 export class UserController {
@@ -18,7 +18,7 @@ export class UserController {
 
   @Get()
   @UseGuards(AuthGuard())
-  findCurrentUser(@User() { username }: UserEntity) {
+  findCurrentUser(@User() { username }: UserEntity): Promise<UserEntity> {
     return this.userServide.findByUsername(username);
   }
 
@@ -28,7 +28,7 @@ export class UserController {
     @User() { username }: UserEntity,
     @Body(new ValidationPipe({ transform: true, whitelist: true }))
     data: UpdateUserDTO,
-  ) {
+  ): Promise<UserEntity> {
     return this.userServide.updateUser(username, data);
   }
 }
