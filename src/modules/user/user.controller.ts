@@ -8,8 +8,8 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthGuard } from '@nestjs/passport';
-import { UserEntity } from 'src/entities/user.entity';
-import { User } from 'src/auth/user.decorator';
+import { UserEntity } from 'src/db/entities/user.entity';
+import { User } from '../auth/user.decorator';
 import { UpdateUserDTO } from './user.dto';
 
 @Controller('user')

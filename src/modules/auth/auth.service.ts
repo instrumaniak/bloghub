@@ -5,9 +5,9 @@ import {
   ConflictException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { LoginDTO, RegisterDTO } from 'src/user/user.dto';
+import { LoginDTO, RegisterDTO } from '../user/user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from 'src/entities/user.entity';
+import { UserEntity } from 'src/db/entities/user.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
