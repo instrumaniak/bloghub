@@ -5,6 +5,8 @@ import {
   Put,
   Body,
   ValidationPipe,
+  NotFoundException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -18,17 +20,25 @@ export class UserController {
 
   @Get()
   @UseGuards(AuthGuard())
-  findCurrentUser(@User() { username }: UserEntity): Promise<UserEntity> {
-    return this.userServide.findByUsername(username);
+  async findCurrentUser(
+    @User() { username }: UserEntity,
+  ): Promise<{ user: UserEntity }> {
+    const user = await this.userServide.findByUsername(username);
+    if (user) {
+      return { user };
+    } else throw new NotFoundException();
   }
 
   @Put()
   @UseGuards(AuthGuard())
-  update(
+  async update(
     @User() { username }: UserEntity,
     @Body(new ValidationPipe({ transform: true, whitelist: true }))
     data: UpdateUserDTO,
-  ): Promise<UserEntity> {
-    return this.userServide.updateUser(username, data);
+  ): Promise<{ user: UserEntity }> {
+    const user = await this.userServide.updateUser(username, data);
+    if (user) {
+      return { user };
+    } else throw new InternalServerErrorException();
   }
 }
